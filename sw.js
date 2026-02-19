@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'palletpro-v25';
+const CACHE_VERSION = 'palletpro-v26';
 
 const ASSETS = [
   './index.html',
