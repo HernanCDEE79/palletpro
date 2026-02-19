@@ -9,7 +9,7 @@
 // ── VERSIÓN DEL CACHÉ ──────────────────────────────────────────
 // Cambiá este número cada vez que subas una actualización.
 // El service worker detecta el cambio y notifica a los usuarios.
-const CACHE_VERSION = 'palletpro-v22-1';
+const CACHE_VERSION = 'palletpro-v23';
 
 // Archivos que se cachean para funcionar offline
 const ASSETS = [
