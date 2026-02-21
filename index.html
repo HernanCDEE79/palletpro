@@ -600,6 +600,7 @@
                             <option value="B">Nave B</option>
                             <option value="C">Nave C</option>
                             <option value="D">Nave D</option>
+                            <option value="D-S">Nave D-S</option>
                             <option value="E">Nave E</option>
                         </select>
                     </div>
@@ -2188,12 +2189,15 @@
         destroyChart('nave');
         const naves = {};
         APP_DATA.forEach(d => { naves[`Nave ${d.nave}`] = (naves[`Nave ${d.nave}`] || 0) + 1; });
-        const ctx = document.getElementById('chart-nave').getContext('2d');
-        chartInstances.nave = new Chart(ctx, {
-            type: 'bar',
+        const ordenNaves = ['Nave A','Nave B','Nave C','Nave D','Nave D-S','Nave E'];
+const labelsOrdenados = [
+    ...ordenNaves.filter(n => naves[n] !== undefined),
+    ...Object.keys(naves).filter(n => !ordenNaves.includes(n)).sort()
+];
+const valoresOrdenados = labelsOrdenados.map(n => naves[n]);
             data: {
-                labels: Object.keys(naves),
-                datasets: [{ label: 'Desvíos', data: Object.values(naves), backgroundColor: '#FF8C00', borderRadius: 8 }]
+                labels: labelsOrdenados,
+datasets: [{ label: 'Desvíos', data: valoresOrdenados, backgroundColor: '#FF8C00', borderRadius: 8 }]
             },
             options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true, ticks: { stepSize: 1 } } } }
         });
